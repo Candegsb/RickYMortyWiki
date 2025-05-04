@@ -1,156 +1,148 @@
 :root {
-    --bg-color: #000000; 
-    --text-color-light: #e0e0e0; 
-    --text-color-dark: #333; 
-    --primary-color-green: #9ae6b4; 
-    --secondary-color-yellow: #f6e05e; 
-    --box-bg-color: #2d3748; 
-    --box-border-color-rick: #9ae6b4; 
-    --box-border-color-morty: #63b3ed; 
-    --heading-color: #00f9a0; 
-    --link-color: #63b3ed; 
-    --link-hover-color: #4299e1; 
-    --navbar-bg: #21252900; 
-    --navbar-link-color: #e0e0e0; 
-    --navbar-link-hover-color: #00f9a0; 
-    --navbar-link-active-color: #f6e05e; 
+    --bg-color: #000000;
+    --text-color-light: #e0e0e0;
+    --text-color-dark: #333;
+    --primary-color-green: #9ae6b4;
+    --secondary-color-yellow: #f6e05e;
+    --box-bg-color: #2d3748;
+    --box-border-color-rick: #9ae6b4;
+    --box-border-color-morty: #63b3ed;
+    --heading-color: #00f9a0;
+    --link-color: #63b3ed;
+    --link-hover-color: #4299e1;
+    --navbar-bg: #21252900;
+    --navbar-link-color: #e0e0e0;
+    --navbar-link-hover-color: #00f9a0;
+    --navbar-link-active-color: #f6e05e;
     --header-logo-max-width: 300px;
     --color-lightblue: hsl(200, 80%, 70%);
-    --color-morty-box: hsl(207, 70%, 66%); 
+    --color-morty-box: hsl(207, 70%, 66%);
 }
 
 body {
-    background-color: var(--bg-color); 
-    color: var(--text-color-light); 
-    font-family: 'Arial', sans-serif; 
-    line-height: 1.6; 
+    background-color: var(--bg-color);
+    color: var(--text-color-light);
+    font-family: 'Share Tech Mono', monospace;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
-
 
 header {
-    padding: 20px 0; 
-    background-color: #000; 
+    padding: 20px 0;
+    background-color: #000;
 }
 
-
 header img.img-fluid {
-    max-width: var(--header-logo-max-width); 
+    max-width: var(--header-logo-max-width);
     height: auto;
-    display: block; 
-    margin-left: auto; 
-    margin-right: auto; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .navbar {
-    background-color: var(--navbar-bg) !important; /* Fondo tranpsparente que gana al de boostrap*/
+    background-color: var(--navbar-bg) !important;
 }
 
-/* enlaces */
+/* Enlaces de la barra de navegación con texto más grande */
 .navbar .navbar-nav .nav-link {
-    color: var(--navbar-link-color); 
-    font-weight: bold; 
-    margin: 0 15px; 
-    transition: color 0.3s ease; 
+    color: var(--navbar-link-color);
+    font-weight: bold;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+    font-family: 'Roboto Condensed', sans-serif; /* He corregido el typo aquí */
+    font-size: 1.3rem; /* ¡Texto más grande! Puedes ajustar el valor (ej: 1.2rem) */
 }
 
-/* enlaces hover*/
 .navbar .navbar-nav .nav-link:hover {
-    color: var(--navbar-link-hover-color); 
+    color: var(--navbar-link-hover-color);
 }
 
-/* enlace activo */
 .navbar .navbar-nav .nav-link.active {
-    color: var(--navbar-link-active-color); /* Cambia el color */
-    border-bottom: 2px solid var(--navbar-link-active-color); /*  línea debajo */
+    color: var(--navbar-link-active-color);
+    border-bottom: 2px solid var(--navbar-link-active-color);
 }
 
 main {
     padding-bottom: 40px;
 }
 
-/* cajas texto */
+/* Estilos de las cajas de texto */
 article {
-    border-radius: 50px; 
-    padding: 20px; 
-    margin-bottom: 20px; 
-    border: 10px solid; 
-    /* El background-color se define específicamente para cada caja */
+    border-radius: 50px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 10px solid;
 }
 
-/* color especifico para la caja de Rick) */
+/* Estilo específico para la caja de Rick */
 .row:nth-child(1) article {
-    border-color: var(--color-lightblue); /* Borde azul claro */
-    background-color: hsla(200, 80%, 70%, 0.2); /* Fondo azul claro con 20% de opacidad */
+    border-color: var(--color-lightblue);
+    background-color: hsla(200, 80%, 70%, 0.2);
 }
 
 .row:nth-child(1) article h2 {
-    color: #ffffff; /* Título en blanco */
+    color: #ffffff;
 }
 
-
-/* color específico para la segunda caja de Morty) */
+/* Estilo específico para la caja de Morty */
 .row:nth-child(2) article {
-     border-color: var(--color-morty-box); 
-     background-color: hsla(207, 70%, 66%, 0.2); 
+    border-color: var(--color-morty-box);
+    background-color: hsla(207, 70%, 66%, 0.2);
 }
 
 .row:nth-child(2) article h2 {
-    color: var(--heading-color); 
+    color: var(--heading-color);
 }
-
 
 article h2 {
-    color: var(--heading-color); 
-    margin-top: 0; 
+    color: var(--heading-color);
+    margin-top: 0;
 }
 
-
-/* Color del texto normal dentro de las cajas */
+/* Estilo del texto normal dentro de las cajas */
 article p {
     color: var(--text-color-light);
 }
 
 article ul {
     color: var(--text-color-light);
-    padding-left: 20px; 
+    padding-left: 20px;
 }
 
-/* Espacio entre los elementos  */
 article ul li {
     margin-bottom: 8px;
 }
 
-/* imagenes centradas */
+/* Imágenes centradas */
 main img {
-    max-width: 100%; 
-    height: auto; 
+    max-width: 100%;
+    height: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Estilo específico para la imagen pequeñita al final de la caja de Rick */
+/* Estilo para la imagen pequeña al final de la caja de Rick */
 article .text-end img {
-    width: 50px; 
-    display: inline-block; 
-    vertical-align: middle; 
+    width: 50px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-/* Estilos para la parte de abajo de la página */
+/* Estilos del pie de página */
 footer {
-    background-color: #0d0d0d; /* Un fondo un poquito más oscuro */
-    color: var(--text-color-light); 
-    padding: 20px 0; 
-    font-size: 0.9em; 
-    text-align: center; 
+    background-color: #0d0d0d;
+    color: var(--text-color-light);
+    padding: 20px 0;
+    font-size: 0.9em;
+    text-align: center;
 }
 
-
+/* Ajustes para pantallas pequeñas (responsividad) */
 @media (max-width: 768px) {
-    /* móvil */
     .navbar-nav {
         text-align: center;
     }
@@ -159,8 +151,7 @@ footer {
         margin: 5px 0;
     }
 
-    /* pantallas pequeñas */
     header img.img-fluid {
-        max-width: 70%; 
+        max-width: 70%;
     }
 }
