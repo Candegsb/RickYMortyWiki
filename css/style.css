@@ -15,8 +15,24 @@
     --navbar-link-hover-color: #00f9a0;
     --navbar-link-active-color: #f6e05e;
     --header-logo-max-width: 300px;
+
     --color-lightblue: hsl(200, 80%, 70%);
+
     --color-morty-box: hsl(207, 70%, 66%);
+
+    --card-border-color: #63b3ed;
+    --card-bg-color: #2d3748;
+    --card-text-color: var(--text-color-light);
+
+    --pagination-border-color: var(--card-border-color);
+    --pagination-link-color: var(--card-text-color);
+    --pagination-link-bg: var(--card-bg-color);
+    --pagination-active-border-color: var(--heading-color);
+    --pagination-active-bg: var(--heading-color);
+    --pagination-active-color: var(--bg-color);
+    --pagination-disabled-color: #6c757d;
+    --pagination-disabled-bg: #343a40;
+    --pagination-disabled-border-color: #454d55;
 }
 
 body {
@@ -46,14 +62,18 @@ header img.img-fluid {
     background-color: var(--navbar-bg) !important;
 }
 
-/* Enlaces de la barra de navegación con texto más grande */
+.navbar-logo-mobile {
+    max-width: 150px;
+    height: auto;
+}
+
 .navbar .navbar-nav .nav-link {
     color: var(--navbar-link-color);
     font-weight: bold;
     margin: 0 15px;
     transition: color 0.3s ease;
-    font-family: 'Roboto Condensed', sans-serif; /* He corregido el typo aquí */
-    font-size: 1.3rem; /* ¡Texto más grande! Puedes ajustar el valor (ej: 1.2rem) */
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.1rem;
 }
 
 .navbar .navbar-nav .nav-link:hover {
@@ -69,7 +89,6 @@ main {
     padding-bottom: 40px;
 }
 
-/* Estilos de las cajas de texto */
 article {
     border-radius: 50px;
     padding: 20px;
@@ -77,7 +96,6 @@ article {
     border: 10px solid;
 }
 
-/* Estilo específico para la caja de Rick */
 .row:nth-child(1) article {
     border-color: var(--color-lightblue);
     background-color: hsla(200, 80%, 70%, 0.2);
@@ -87,7 +105,6 @@ article {
     color: #ffffff;
 }
 
-/* Estilo específico para la caja de Morty */
 .row:nth-child(2) article {
     border-color: var(--color-morty-box);
     background-color: hsla(207, 70%, 66%, 0.2);
@@ -102,7 +119,6 @@ article h2 {
     margin-top: 0;
 }
 
-/* Estilo del texto normal dentro de las cajas */
 article p {
     color: var(--text-color-light);
 }
@@ -116,7 +132,6 @@ article ul li {
     margin-bottom: 8px;
 }
 
-/* Imágenes centradas */
 main img {
     max-width: 100%;
     height: auto;
@@ -125,14 +140,12 @@ main img {
     margin-right: auto;
 }
 
-/* Estilo para la imagen pequeña al final de la caja de Rick */
 article .text-end img {
     width: 50px;
     display: inline-block;
     vertical-align: middle;
 }
 
-/* Estilos del pie de página */
 footer {
     background-color: #0d0d0d;
     color: var(--text-color-light);
@@ -141,7 +154,73 @@ footer {
     text-align: center;
 }
 
-/* Ajustes para pantallas pequeñas (responsividad) */
+#characters-list .card {
+    background-color: var(--card-bg-color);
+    color: var(--card-text-color);
+    border: 5px solid var(--card-border-color);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+#characters-list .card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+#characters-list .card-body {
+    padding: 15px;
+}
+
+#characters-list .card-title {
+    color: var(--heading-color);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#characters-list .card-text {
+    color: var(--card-text-color);
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.pagination .page-item .page-link {
+    background-color: var(--pagination-link-bg);
+    color: var(--pagination-link-color);
+    border: 2px solid var(--pagination-border-color);
+    margin: 0 3px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination .page-item:first-child .page-link,
+.pagination .page-item:last-child .page-link {
+    border-radius: 5px;
+}
+
+
+.pagination .page-item.active .page-link {
+    background-color: var(--pagination-active-bg);
+    border-color: var(--pagination-active-border-color);
+    color: var(--pagination-active-color);
+    font-weight: bold;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: var(--pagination-disabled-color);
+    background-color: var(--pagination-disabled-bg);
+    border-color: var(--pagination-disabled-border-color);
+    cursor: not-allowed;
+}
+
+.pagination .page-item .page-link:hover:not(.disabled) {
+    background-color: var(--pagination-border-color);
+    border-color: var(--pagination-active-border-color);
+    color: var(--pagination-active-color);
+}
+
+
 @media (max-width: 768px) {
     .navbar-nav {
         text-align: center;
@@ -153,5 +232,21 @@ footer {
 
     header img.img-fluid {
         max-width: 70%;
+    }
+
+    .navbar-logo-mobile {
+         max-width: 120px;
+    }
+
+    #characters-list .col-sm-6 {
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .pagination .page-item {
+        margin-bottom: 5px;
     }
 }

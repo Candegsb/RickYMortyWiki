@@ -1,23 +1,21 @@
 $(document).ready(function() {
+
     const API_URL = "https://rickandmortyapi.com/api/";
 
     const dynamicContentSection = $('#dynamic-content');
 
-    // Función para limpiar el contenido dinámico actual
     function clearDynamicContent() {
         dynamicContentSection.empty();
     }
 
-    // Función para mostrar un mensaje de carga o error
     function showMessage(message) {
         clearDynamicContent();
         dynamicContentSection.append(`<div class="col-12"><p class="text-center">${message}</p></div>`);
     }
 
-    // Función genérica para obtener datos de la API
     async function fetchData(endpoint) {
         try {
-            showMessage("Cargando datos..."); // Muestra mensaje de carga
+            showMessage("Cargando datos...");
             const response = await fetch(API_URL + endpoint);
             if (!response.ok) {
                 throw new Error(`Error al obtener datos: ${response.status}`);
@@ -26,12 +24,11 @@ $(document).ready(function() {
             return data;
         } catch (error) {
             console.error("Error fetching data:", error);
-            showMessage(`Error al cargar datos: ${error.message}`); // Muestra mensaje de error
+            showMessage(`Error al cargar datos: ${error.message}`);
             return null;
         }
     }
 
-    // Función para renderizar personajes
     function renderCharacters(characters) {
         clearDynamicContent();
         if (!characters || characters.length === 0) {
@@ -58,7 +55,6 @@ $(document).ready(function() {
         });
     }
 
-     // Función para renderizar episodios
     function renderEpisodes(episodes) {
         clearDynamicContent();
         if (!episodes || episodes.length === 0) {
@@ -81,7 +77,6 @@ $(document).ready(function() {
         });
     }
 
-    // Función para renderizar localizaciones
     function renderLocations(locations) {
         clearDynamicContent();
         if (!locations || locations.length === 0) {
@@ -106,14 +101,13 @@ $(document).ready(function() {
     }
 
 
-    // Función principal para cargar y mostrar contenido según la categoría
     async function loadContent(category) {
         let data = null;
         switch (category) {
             case 'Personajes':
                 data = await fetchData('character');
                 if (data) {
-                    renderCharacters(data.results); // La API devuelve los resultados en 'results'
+                    renderCharacters(data.results);
                 }
                 break;
             case 'Episodios':
@@ -129,7 +123,6 @@ $(document).ready(function() {
                  }
                 break;
             case 'Inicio':
-
                  clearDynamicContent();
                  break;
             case 'Otros':
@@ -142,14 +135,13 @@ $(document).ready(function() {
     }
 
     $('.navbar-nav .nav-link').on('click', function(event) {
-        event.preventDefault(); // Previene la acción por defecto del enlace
+        event.preventDefault();
 
-        // Elimina la clase 'active' de todos los enlaces y añade al que se hizo clic
         $('.navbar-nav .nav-link').removeClass('active');
         $(this).addClass('active');
 
-        const category = $(this).text(); // Obtiene el texto del enlace (Ej: "Personajes")
-        loadContent(category); // Carga el contenido correspondiente a la categoría
+        const category = $(this).text();
+        loadContent(category);
     });
 
 
