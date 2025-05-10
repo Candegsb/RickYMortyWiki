@@ -134,15 +134,16 @@ $(document).ready(function() {
         }
     }
 
-    $('.navbar-nav .nav-link').on('click', function(event) {
-        event.preventDefault();
 
-        $('.navbar-nav .nav-link').removeClass('active');
-        $(this).addClass('active');
+    //SECCION QUE NO PERMITE NAVEGAR
 
-        const category = $(this).text();
-        loadContent(category);
-    });
+    // $('.navbar-nav .nav-link').on('click', function(event) {
+    //     event.preventDefault();
 
+    //     $('.navbar-nav .nav-link').removeClass('active');
+    //     $(this).addClass('active');
 
+    //     const category = $(this).text();
+    //     loadContent(category);
+    // });
 });
