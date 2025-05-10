@@ -84,11 +84,11 @@ $(document).ready(function() {
             return;
         }
 
-         locations.forEach(location => {
+        locations.forEach(location => {
             const cardHtml = `
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                     <div class="card h-100">
-                         <div class="card-body">
+                        <div class="card-body">
                             <h5 class="card-title">${location.name}</h5>
                             <p class="card-text">Tipo: ${location.type}</p>
                             <p class="card-text">Dimensión: ${location.dimension}</p>
@@ -104,29 +104,33 @@ $(document).ready(function() {
     async function loadContent(category) {
         let data = null;
         switch (category) {
-            case 'Personajes':
+            case 'PERSONAJES': // Nota: Cambié a mayúsculas para que coincida con el texto del enlace
                 data = await fetchData('character');
                 if (data) {
                     renderCharacters(data.results);
                 }
                 break;
-            case 'Episodios':
+            case 'EPISODIOS': // Nota: Cambié a mayúsculas
                  data = await fetchData('episode');
                  if (data) {
                      renderEpisodes(data.results);
                  }
                 break;
-            case 'Localizaciones':
+            case 'LOCALIZACIONES': // Nota: Cambié a mayúsculas
                 data = await fetchData('location');
                  if (data) {
                      renderLocations(data.results);
                  }
                 break;
-            case 'Inicio':
+            case 'INICIO': // Nota: Cambié a mayúsculas
                  clearDynamicContent();
+                 // Podrías añadir aquí lógica para mostrar el contenido original del inicio si es necesario
                  break;
-            case 'Otros':
+            case 'OTROS': // Nota: Cambié a mayúsculas
                  showMessage("Contenido 'Otros' aún no disponible.");
+                 break;
+            case 'JUEGO': // Añadir el caso para el enlace "JUEGO" si existe en el HTML principal
+                 showMessage("Contenido 'Juego' aún no disponible.");
                  break;
             default:
                 showMessage("Categoría no reconocida.");
@@ -134,16 +138,17 @@ $(document).ready(function() {
         }
     }
 
+    // Elimina o comenta este bloque:
+    /*
+    $('.navbar-nav .nav-link').on('click', function(event) {
+        event.preventDefault();
 
-    //SECCION QUE NO PERMITE NAVEGAR
+        $('.navbar-nav .nav-link').removeClass('active');
+        $(this).addClass('active');
 
-    // $('.navbar-nav .nav-link').on('click', function(event) {
-    //     event.preventDefault();
-
-    //     $('.navbar-nav .nav-link').removeClass('active');
-    //     $(this).addClass('active');
-
-    //     const category = $(this).text();
-    //     loadContent(category);
-    // });
+        const category = $(this).text();
+        loadContent(category);
+    });
+    */
+   
 });
