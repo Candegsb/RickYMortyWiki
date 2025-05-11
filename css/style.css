@@ -13,16 +13,22 @@
     --navbar-bg: #21252900;
     --navbar-link-color: #e0e0e0;
     --navbar-link-hover-color: #00f9a0;
-    --navbar-link-active-color: #f6e05e;
+    --navbar-link-active-color: var(--secondary-color-yellow); 
     --header-logo-max-width: 300px;
 
     --color-lightblue: hsl(200, 80%, 70%);
-
     --color-morty-box: hsl(207, 70%, 66%);
 
     --card-border-color: #63b3ed;
     --card-bg-color: #2d3748;
     --card-text-color: var(--text-color-light);
+
+    /* Variables para el estado hover de las tarjetas */
+    --card-hover-bg-color: #000000;
+    --card-hover-border-color: cyan;
+    --card-hover-text-color: #ffffff;
+    --card-hover-title-color: var(--secondary-color-yellow); /*Amarillo anaranjado de titulos*/
+
 
     --pagination-border-color: var(--card-border-color);
     --pagination-link-color: var(--card-text-color);
@@ -154,37 +160,77 @@ footer {
     text-align: center;
 }
 
-#characters-list .card {
+/* Estilos para las tarjetas en las listas dinámicas de la API*/
+#characters-list .card,
+#episodes-list .card,
+#locations-list .card {
     background-color: var(--card-bg-color);
     color: var(--card-text-color);
     border: 5px solid var(--card-border-color);
     border-radius: 15px;
     overflow: hidden;
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    /* Transición suave entre el estado normal y hover en las tarjetas */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-#characters-list .card-img-top {
+#characters-list .card-img-top,
+#episodes-list .card-img-top, /* por si ponemos imagen a los episodios */
+#locations-list .card-img-top { /* y por si ponemos imagen a las localizaciones*/
     width: 100%;
     height: auto;
 }
 
-#characters-list .card-body {
+
+#characters-list .card-body,
+#episodes-list .card-body,
+#locations-list .card-body {
     padding: 15px;
 }
 
-#characters-list .card-title {
-    color: var(--heading-color);
+#characters-list .card-title,
+#episodes-list .card-title,
+#locations-list .card-title {
+    color: var(--heading-color); 
     font-size: 1.2rem;
     margin-bottom: 10px;
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-#characters-list .card-text {
-    color: var(--card-text-color);
+#characters-list .card-text,
+#episodes-list .card-text,
+#locations-list .card-text {
+    color: var(--card-text-color); 
     font-size: 0.95rem;
     margin-bottom: 5px;
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+/* Estilo para el hover en tarjetas */
+#characters-list .card:hover,
+#episodes-list .card:hover,
+#locations-list .card:hover {
+    transform: scale(1.05); /* Aumentar tamaño */
+    background-color: var(--card-hover-bg-color);
+    border-color: var(--card-hover-border-color);
+}
+
+/* párrafos dentro de la tarjeta cambien a color blanco en hover */
+#characters-list .card:hover p,
+#episodes-list .card:hover p,
+#locations-list .card:hover p {
+    color: var(--card-hover-text-color); 
+}
+
+/* Estilo para los títulos (h5) dentro de las tarjetas en el hover */
+#characters-list .card:hover h5,
+#episodes-list .card:hover h5,
+#locations-list .card:hover h5 {
+    color: var(--card-hover-title-color); /* Colorcillo amarillento anaranjado para títulos */
+}
+
+
+/* Estilos para la paginación */
 .pagination .page-item .page-link {
     background-color: var(--pagination-link-bg);
     color: var(--pagination-link-color);
@@ -221,6 +267,12 @@ footer {
 }
 
 
+
+
+
+
+
+/* Media Query para dispositivos móviles */
 @media (max-width: 768px) {
     .navbar-nav {
         text-align: center;
