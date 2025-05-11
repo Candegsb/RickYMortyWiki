@@ -307,6 +307,10 @@ footer {
     position: relative;
     cursor: pointer;
     transition: transform 0.2s ease-in-out, border-color 0.2s ease;
+    background-image: url("../media/img/Portal.png"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card:hover {
@@ -323,6 +327,11 @@ footer {
 
 .card.revelada img {
     display: block;
+}
+
+/* Cuando está revelada, el fondo desaparece y se ve la imagen real */
+.card.revelada {
+  background-image: none;
 }
 
 .contenedor-juego {
