@@ -44,11 +44,25 @@ tablero.style.gridTemplateColumns = `repeat(${columnas}, 1fr)`;
   pares.forEach((img) => {
     const card = document.createElement("div");
     card.classList.add("card");
-    card.dataset.imagen = img;
+
+    const inner = document.createElement("div");
+    inner.classList.add("card-inner");
+
+    const front = document.createElement("div");
+    front.classList.add("card-face", "card-front");
+
+    const back = document.createElement("div");
+    back.classList.add("card-face", "card-back");
 
     const imagen = document.createElement("img");
-    imagen.src = `${rutasBase}${img}`;
-    card.appendChild(imagen);
+    imagen.src = rutasBase + img;
+    back.appendChild(imagen);
+
+    inner.appendChild(front);
+    inner.appendChild(back);
+    card.appendChild(inner);
+
+    card.dataset.imagen = img;
 
     card.addEventListener("click", () => revelarCarta(card, cantidad));
     tablero.appendChild(card);
