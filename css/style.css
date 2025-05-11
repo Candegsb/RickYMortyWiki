@@ -225,6 +225,12 @@ main {
     transform: scale(1.05); /* Aumentar tamaño */
     background-color: var(--card-hover-bg-color);
     border-color: var(--card-hover-border-color);
+      box-shadow:
+    0 0 5px #00f9a0,
+    0 0 10px #63b3ed,
+    0 0 15px #f6e05e;
+  border-color: #00f9a0;
+  transform: scale(1.05);
 }
 
 /* párrafos dentro de la tarjeta cambien a color blanco en hover */
