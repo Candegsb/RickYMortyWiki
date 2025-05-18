@@ -100,6 +100,10 @@ header img.img-fluid {
 
 main {
     flex: 1 0 auto;
+    width: 100%;
+    max-width: 1000px;
+      padding: 20px;
+  border-radius: 10px;
 }
 
 article {
@@ -160,20 +164,15 @@ article .text-end img {
 }
 
 footer {
-    flex-shrink: 0;
-    text-align: center;
-    padding: 10px;
-    background-color: #111;
-    color: var(--text-color-light);
-    z-index: 1;
+  flex-shrink: 0;
+  background-color: #0d0d0d;
+  color: var(--text-color-light);
+  font-size: 0.9rem;
+  text-align: center;
+  border-top: 2px solid var(--primary-color-green);
+  padding: 20px 0;
 }
 
-
-
-main {
-  padding: 20px;
-  border-radius: 10px;
-}
 
 /* Estilos para las tarjetas en las listas dinámicas de la API*/
 #characters-list .card,
@@ -388,94 +387,76 @@ main {
     max-width: 1000px;
 }
 
-.card {
-    perspective: 1000px;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background-color: transparent
-} 
+.memory-card {
+  perspective: 1000px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: transparent;
+}
 
-.card-inner {
+.memory-card .card-inner {
   width: 100%;
   height: 100%;
   position: relative;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  background-color: transparent
+  background-color: transparent;
 }
 
-.card.revelada .card-inner {
+.memory-card.revelada .card-inner {
   transform: rotateY(180deg);
 }
 
-
-.card-face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    border: 4px solid var(--card-border-color);
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    overflow: hidden;
-    background-color: var(--card-bg-color);
-    border: 2px solid var(--card-border-color);
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.1);
-    transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.card:hover .card-face {
-  box-shadow:
-    0 0 5px #00f9a0,
-    0 0 10px #63b3ed,
-  0 0 15px #f6e05e;
-  border-color: #00f9a0;
-}
-
-.card-front,
-.card-back {
+.memory-card .card-face {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
   border-radius: 15px;
+  border: 4px solid var(--card-border-color);
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
   overflow: hidden;
+  background-color: var(--card-bg-color);
+  border: 2px solid var(--card-border-color);
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.card-front {
-    background-image: url("../media/img/Portal.png");
-    background-size: contain;         
-    background-repeat: no-repeat;
-    background-position: center;   
+.memory-card:hover .card-face {
+  box-shadow:
+    0 0 5px #00f9a0,
+    0 0 10px #63b3ed,
+    0 0 15px #f6e05e;
+  border-color: #00f9a0;
 }
 
-.card-back {
+.memory-card .card-front {
+  background-image: url("../media/img/Portal.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.memory-card .card-back {
   transform: rotateY(180deg);
 }
 
-.card-back img {
+.memory-card .card-back img {
   width: 90%;
   height: 90%;
   object-fit: contain;
   pointer-events: none;
 }
 
-.card:hover {
-    transform: scale(1.05);
+.memory-card:hover {
+  transform: scale(1.05);
 }
 
-/* .card img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: none;
-} */
-
-.card.revelada img {
-    display: block;
+.memory-card.revelada img {
+  display: block;
 }
 
 /* Cuando está revelada, el fondo desaparece y se ve la imagen real */
@@ -493,10 +474,6 @@ main {
     text-align: center;
 }
 
-main {
-    width: 100%;
-    max-width: 1000px;
-}
 
 body {
   background: radial-gradient(ellipse at bottom, #050505 0%, #000000 100%);

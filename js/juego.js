@@ -43,7 +43,7 @@ tablero.style.gridTemplateColumns = `repeat(${columnas}, 1fr)`;
 
   pares.forEach((img) => {
     const card = document.createElement("div");
-    card.classList.add("card");
+    card.classList.add("memory-card");
 
     const inner = document.createElement("div");
     inner.classList.add("card-inner");
