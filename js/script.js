@@ -230,3 +230,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const track = document.querySelector(".slider-track");
+    const items = document.querySelectorAll(".slider-item");
+    const prevBtn = document.querySelector(".slider-btn.left");
+    const nextBtn = document.querySelector(".slider-btn.right");
+
+    let index = 0;
+    const itemCount = items.length;
+
+    function updateSlider() {
+      const offset = index * (items[0].offsetWidth + 20); // item + gap
+      track.style.transform = `translateX(-${offset}px)`;
+    }
+
+    function goNext() {
+      index = (index + 1) % itemCount;
+      updateSlider();
+    }
+
+    function goPrev() {
+      index = (index - 1 + itemCount) % itemCount;
+      updateSlider();
+    }
+
+    // Botones
+    nextBtn.addEventListener("click", goNext);
+    prevBtn.addEventListener("click", goPrev);
+
+    // Autoplay
+    let autoplayInterval = setInterval(goNext, 3000); // cada 3 segundos
+
+    // Pausar autoplay al pasar el mouse
+    track.addEventListener("mouseenter", () => clearInterval(autoplayInterval));
+    track.addEventListener("mouseleave", () => {
+      autoplayInterval = setInterval(goNext, 5000);
+    });
+
+    // Ajuste inicial
+    window.addEventListener("resize", updateSlider);
+    updateSlider();
+  });
