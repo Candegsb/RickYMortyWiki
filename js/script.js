@@ -152,3 +152,27 @@ $(document).ready(function() {
     */
    
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contacto-form");
+  const respuesta = document.getElementById("respuesta-form");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+
+    if (!nombre || !email || !mensaje) {
+      respuesta.textContent = "¡Completa todos los campos, viajero dimensional!";
+      respuesta.style.color = "var(--secondary-color-yellow)";
+      return;
+    }
+
+    // Simulación de envío exitoso
+    respuesta.textContent = "¡Tu mensaje fue enviado al Consejo de Ricks!";
+    respuesta.style.color = "var(--primary-color-green)";
+    form.reset();
+  });
+});

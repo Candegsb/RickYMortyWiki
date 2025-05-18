@@ -473,6 +473,39 @@ body::before {
   }
 }
 
+form label {
+  color: var(--text-color-light);
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  background-color: #1a1a1a;
+  border: 2px solid var(--card-border-color);
+  color: var(--text-color-light);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: var(--card-hover-border-color);
+  outline: none;
+  box-shadow: 0 0 10px #00f9a0;
+}
+
+.btn-contacto {
+  background-color: transparent;
+  border: 2px solid var(--primary-color-green);
+  color: var(--primary-color-green);
+  padding: 10px;
+  font-family: 'Share Tech Mono', monospace;
+  transition: all 0.3s ease;
+}
+
+.btn-contacto:hover {
+  background-color: var(--primary-color-green);
+  color: var(--bg-color);
+}
 
 
 /* @media (min-width: 1024px) {
@@ -516,8 +549,8 @@ body::before {
          max-width: 120px;
     }
 
-    #characters-list .col-sm-6 {
-    }
+    /* #characters-list .col-sm-6 {
+    } */
 
     .pagination {
         flex-wrap: wrap;
