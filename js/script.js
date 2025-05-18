@@ -176,3 +176,57 @@ document.addEventListener("DOMContentLoaded", () => {
     form.reset();
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".slider-track");
+  const items = document.querySelectorAll(".slider-item");
+  const btnLeft = document.querySelector(".slider-btn.left");
+  const btnRight = document.querySelector(".slider-btn.right");
+
+  let currentIndex = 0;
+
+  const updateSlider = () => {
+    const itemWidth = items[0].offsetWidth + 20; // 20px de gap
+    track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+  };
+
+  btnLeft.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  });
+
+  btnRight.addEventListener("click", () => {
+    if (currentIndex < items.length - 1) {
+      currentIndex++;
+      updateSlider();
+    }
+  });
+
+  window.addEventListener("resize", updateSlider);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("fade-in");
+
+  const links = document.querySelectorAll("a[href]");
+
+  links.forEach(link => {
+    // Excluir enlaces con # (anclas internas o vacías)
+    if (
+      link.getAttribute("href").startsWith("#") ||
+      link.hasAttribute("target")
+    ) return;
+
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const href = this.getAttribute("href");
+      document.body.classList.remove("fade-in");
+      document.body.classList.add("fade-out");
+      setTimeout(() => {
+        window.location.href = href;
+      }, 500); // Espera a que termine la animación
+    });
+});
+});

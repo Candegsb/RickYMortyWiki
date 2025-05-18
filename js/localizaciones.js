@@ -149,3 +149,27 @@ $(document).ready(function() {
     }
     loadLocationsPage(1);
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("fade-in");
+
+  const links = document.querySelectorAll("a[href]");
+
+  links.forEach(link => {
+    // Excluir enlaces con # (anclas internas o vacías)
+    if (
+      link.getAttribute("href").startsWith("#") ||
+      link.hasAttribute("target")
+    ) return;
+
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const href = this.getAttribute("href");
+      document.body.classList.remove("fade-in");
+      document.body.classList.add("fade-out");
+      setTimeout(() => {
+        window.location.href = href;
+      }, 500); // Espera a que termine la animación
+    });
+});
+});
