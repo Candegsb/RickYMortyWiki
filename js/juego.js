@@ -104,24 +104,3 @@ function checkVictoria(totalPares) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const transicion = document.getElementById("pantalla-transicion");
-
-  const links = document.querySelectorAll("a[href]");
-
-  links.forEach(link => {
-    if (
-      link.getAttribute("href").startsWith("#") ||
-      link.hasAttribute("target")
-    ) return;
-
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      const destino = this.getAttribute("href");
-      transicion.classList.add("activa");
-      setTimeout(() => {
-        window.location.href = destino;
-      }, 500);
-    });
-  });
-});

@@ -418,7 +418,6 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
@@ -634,12 +633,14 @@ body.fade-in {
 
 /* Media Query para dispositivos móviles */
 @media (max-width: 768px) {
-    .navbar-nav {
-        text-align: center;
-    }
+  .navbar-nav {
+    flex-direction: column !important;
+    align-items: center;
+  }
 
     .navbar .navbar-nav .nav-link {
-        margin: 5px 0;
+        margin: 8px 0;
+    font-size: 1rem;
     }
 
     header img.img-fluid {
