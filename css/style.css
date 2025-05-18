@@ -19,8 +19,8 @@
     --color-lightblue: hsl(200, 80%, 70%);
     --color-morty-box: hsl(207, 70%, 66%);
 
-    --card-border-color: #63b3ed;
-    --card-bg-color: #2d3748;
+    --card-border-color: #63b3ed; /* Color del borde de la tarjeta (azul claro) */
+    --card-bg-color: #2d3748; /* Color de fondo de la tarjeta */
     --card-text-color: var(--text-color-light);
 
     /* Variables para el estado hover de las tarjetas */
@@ -178,7 +178,8 @@ main {
 /* Estilos para las tarjetas en las listas dinámicas de la API*/
 #characters-list .card,
 #episodes-list .card,
-#locations-list .card {
+#locations-list .card,
+#seasons-container .card {
     background-color: var(--card-bg-color);
     color: var(--card-text-color);
     border: 5px solid var(--card-border-color);
@@ -186,8 +187,73 @@ main {
     overflow: hidden;
     cursor: pointer; /* Cambia el cursor al pasar por encima */
     /* Transición suave entre el estado normal y hover en las tarjetas */
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(99, 179, 237, 0.5); /* Sombra que emula un glow azul claro */
 }
+
+/* --- Nuevas reglas específicas para las tarjetas de temporada --- */
+
+/* Aseguramos que la tarjeta de temporada tenga una altura mínima y se comporte como flex container para su contenido */
+#seasons-container .card {
+    min-height: 80px; /* Ajusta este valor si necesitas que el recuadro sea más o menos alto */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente su contenido (card-body) */
+    align-items: center; /* Centra verticalmente su contenido (card-body) */
+    /* Quitamos el aspect-ratio que podría estar en un .card general si lo tuvieras */
+    aspect-ratio: unset; /* Asegura que no se fuerce a ser cuadrada */
+    width: auto; /* Permite que el ancho se ajuste al contenido o al layout de Bootstrap */
+}
+
+/* Aplicamos flexbox a la card-body para centrar su contenido (el título) */
+#seasons-container .card-body {
+    padding: 5px 20px; /* Padding reducido verticalmente y mayor horizontalmente */
+    display: flex;
+    flex-direction: column; /* Apila el contenido (el título) verticalmente */
+    justify-content: center; /* Centra verticalmente el título dentro del card-body */
+    align-items: center; /* Centra horizontalmente el título dentro del card-body */
+    height: 100%; /* Asegura que el card-body ocupe todo el espacio vertical disponible de la tarjeta */
+    text-align: center; /* Centrado de texto como fallback */
+}
+
+/* Reglas específicas para el título de la tarjeta de temporada */
+#seasons-container .season-card .card-title {
+    color: #ffffff; /* Texto blanco */
+    display: inline-block; /* Necesario para que el pseudo-elemento se posicione correctamente */
+    position: relative; /* Base para el posicionamiento absoluto de la línea */
+    padding-bottom: 3px; /* Espacio entre el texto y la línea */
+    margin: 0; /* ¡IMPORTANTE! Elimina TODOS los márgenes predeterminados del h5 */
+    font-weight: 700; /* Hace el texto más negrita */
+    font-size: 1.2rem; /* Mantén el tamaño de fuente si es el que deseas */
+    font-family: 'Roboto Condensed', sans-serif; /* Mantiene la fuente */
+    transition: color 0.3s ease; /* Transición suave para el color del texto */
+}
+
+/* Regla para la línea debajo del texto "Temporada X" */
+#seasons-container .season-card .card-title::after {
+    content: "";
+    position: absolute;
+    left: 50%; /* Centra la línea horizontalmente */
+    transform: translateX(-50%); /* Ajuste fino para el centrado */
+    bottom: 0; /* Posiciona la línea en la parte inferior del texto */
+    width: 60px; /* Ancho de la línea, ajusta si es necesario */
+    height: 2px; /* Grosor de la línea */
+    background-color: #ffffff; /* Mismo color que el texto */
+    transition: width 0.3s ease, background-color 0.3s ease; /* Transición para el hover */
+}
+
+/* Hover específico para el título de temporada */
+#seasons-container .season-card:hover .card-title {
+    color: var(--secondary-color-yellow); /* Cambia el color del texto en hover */
+}
+
+/* Hover para la línea debajo del título de temporada */
+#seasons-container .season-card:hover .card-title::after {
+    background-color: var(--secondary-color-yellow); /* Cambia el color de la línea en hover */
+    width: 80px; /* Opcional: la línea puede hacerse un poco más larga en hover */
+}
+
+/* --- Fin Nuevas reglas específicas --- */
+
 
 #characters-list .card-img-top,
 #episodes-list .card-img-top, /* por si ponemos imagen a los episodios */
@@ -200,7 +266,7 @@ main {
 #characters-list .card-body,
 #episodes-list .card-body,
 #locations-list .card-body {
-    padding: 15px;
+    padding: 15px; /* Estas no son las tarjetas de temporada, mantenemos su padding original */
 }
 
 #characters-list .card-title,
@@ -212,9 +278,11 @@ main {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+
 #characters-list .card-text,
 #episodes-list .card-text,
-#locations-list .card-text {
+#locations-list .card-text,
+#seasons-container .card-text {
     color: var(--card-text-color); 
     font-size: 0.95rem;
     margin-bottom: 5px;
@@ -224,22 +292,24 @@ main {
 /* Estilo para el hover en tarjetas */
 #characters-list .card:hover,
 #episodes-list .card:hover,
-#locations-list .card:hover {
+#locations-list .card:hover,
+#seasons-container .card:hover { /* Incluimos las tarjetas de temporada aquí! */
     transform: scale(1.05); /* Aumentar tamaño */
     background-color: var(--card-hover-bg-color);
     border-color: var(--card-hover-border-color);
       box-shadow:
     0 0 5px #00f9a0,
     0 0 10px #63b3ed,
-    0 0 15px #f6e05e;
-  border-color: #00f9a0;
-  transform: scale(1.05);
+  0 0 15px #f6e05e;
+  border-color: #00f9a0; /* El borde pasa a ser verde en hover */
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.6);
 }
 
 /* párrafos dentro de la tarjeta cambien a color blanco en hover */
 #characters-list .card:hover p,
 #episodes-list .card:hover p,
-#locations-list .card:hover p {
+#locations-list .card:hover p,
+#seasons-container .card:hover p {
     color: var(--card-hover-text-color); 
 }
 
@@ -361,7 +431,7 @@ main {
   box-shadow:
     0 0 5px #00f9a0,
     0 0 10px #63b3ed,
-    0 0 15px #f6e05e;
+  0 0 15px #f6e05e;
   border-color: #00f9a0;
 }
 
@@ -472,26 +542,6 @@ body::before {
     transform: translate(-100px, -100px);
   }
 }
-
-
-
-/* @media (min-width: 1024px) {
-    .tablero {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-}
-
-@media (max-width: 1023px) {
-    .tablero {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    }
-}
-
-@media (max-width: 600px) {
-    .tablero {
-        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-    }
-} */
 
 
 
